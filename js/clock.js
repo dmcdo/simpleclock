@@ -22,8 +22,9 @@ function getDateString(date) {
 
 function getTimeString(date) {
     let hour = date.getHours();
-    let period = hour <= 12 ? 'am' : 'pm';
-    hour = hour <= 12 ? hour : hour - 12; // Subtract 12 from hour if pm
+    let period = hour < 12 ? 'am' : 'pm';
+    hour = hour < 12 ? hour : hour - 12; // Subtract 12 from hour if pm
+    if (hour === 0) hour = 12;
 
     let minute = date.getMinutes();
     minute = minute < 10 ? '0' + minute : String(minute);
